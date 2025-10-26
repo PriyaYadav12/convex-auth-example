@@ -22,7 +22,7 @@ export function VerificationCodeEmail({
         <Container className="container px-20 font-sans">
           <Heading className="text-xl font-bold mb-4">
             {/* TODO: Update with your app name */}
-            Sign in to My App
+            Sign in to Lalli Fafa
           </Heading>
           <Text className="text-sm">
             Please enter the following code on the sign in page.
@@ -31,8 +31,7 @@ export function VerificationCodeEmail({
             <Text className="font-semibold">Verification code</Text>
             <Text className="font-bold text-4xl">{code}</Text>
             <Text>
-              (This code is valid for{" "}
-              {Math.floor((+expires - Date.now()) / (60 * 60 * 1000))} hours)
+              (This code is valid for 10 minutes)
             </Text>
           </Section>
         </Container>

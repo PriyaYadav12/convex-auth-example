@@ -22,7 +22,7 @@ export function SignInFormPasswordAndVerifyViaCode() {
   const [submitting, setSubmitting] = useState(false);
   return (
     <div className="max-w-[384px] mx-auto flex flex-col gap-4">
-      {step === "signIn" ? (
+      {step === "signIn"? (
         <>
           <h2 className="font-semibold text-2xl tracking-tight">
             Sign in or create an account
@@ -46,10 +46,9 @@ export function SignInFormPasswordAndVerifyViaCode() {
             Check your email
           </h2>
           <p className="text-muted-foreground text-sm">
-            Enter the 8-digit code we sent to your email address.
+            Enter the 5-digit code we sent to your email address.
           </p>
           <form
-            className="flex flex-col"
             onSubmit={(event) => {
               event.preventDefault();
               setSubmitting(true);
@@ -64,8 +63,12 @@ export function SignInFormPasswordAndVerifyViaCode() {
               });
             }}
           >
-            <label htmlFor="email">Code</label>
-            <CodeInput />
+            <div className="space-y-2 relative z-50">
+              <label htmlFor="code" className="block text-sm font-medium relative z-50">Code</label>
+              <div className="relative z-50 bg-white p-2 rounded-lg">
+                <CodeInput />
+              </div>
+            </div>
             <input name="email" value={step.email} type="hidden" />
             <input name="flow" value="email-verification" type="hidden" />
             <Button type="submit" disabled={submitting}>

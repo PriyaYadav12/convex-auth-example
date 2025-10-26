@@ -1,5 +1,5 @@
 {
-  "name": "test-example",
+  "name": "story-telling-app",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -14,7 +14,9 @@
     "test": "vitest",
     "test:once": "vitest run",
     "test:debug": "vitest --inspect-brk --no-file-parallelism",
-    "test:coverage": "vitest run --coverage"
+    "test:coverage": "vitest run --coverage",
+    "secret":"convex env set"
+
   },
   "dependencies": {
     "@convex-dev/auth": "^0.0.80",

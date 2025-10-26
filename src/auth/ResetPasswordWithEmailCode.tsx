@@ -38,7 +38,7 @@ export function ResetPasswordWithEmailCode({
         Check your email
       </h2>
       <p className="text-muted-foreground text-sm">
-        Enter the 8-digit code we sent to your email address and choose a new
+        Enter the 5-digit code we sent to your email address and choose a new
         password.
       </p>
       <form
@@ -47,15 +47,16 @@ export function ResetPasswordWithEmailCode({
           event.preventDefault();
           setSubmitting(true);
           const formData = new FormData(event.currentTarget);
-          signIn(provider, formData).catch((error) => {
-            console.error(error);
-            toast({
-              title:
-                "Code could not be verified or new password is too short, try again",
-              variant: "destructive",
-            });
-            setSubmitting(false);
-          });
+          signIn(provider, formData)
+            .catch((error) => {
+              console.error(error);
+              toast({
+                title:
+                  "Code could not be verified or new password is too short, try again",
+                variant: "destructive",
+              });
+            })
+            .finally(() => setSubmitting(false));
         }}
       >
         <label htmlFor="email">Code</label>

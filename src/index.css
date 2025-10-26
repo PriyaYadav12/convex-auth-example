@@ -2,30 +2,33 @@
 @tailwind components;
 @tailwind utilities;
 
-/* To change the theme colors, change the values below
-  or use the "Copy code" button at https://ui.shadcn.com/themes */
+/* Lalli Fafa Kid-Friendly Theme Colors - Custom Brand Colors */
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 20 14.3% 4.1%;
+    --foreground: 180 100% 33%;
     --card: 0 0% 100%;
-    --card-foreground: 20 14.3% 4.1%;
+    --card-foreground: 180 100% 33%;
     --popover: 0 0% 100%;
-    --popover-foreground: 20 14.3% 4.1%;
-    --primary: 24 9.8% 10%;
-    --primary-foreground: 60 9.1% 97.8%;
-    --secondary: 60 4.8% 95.9%;
-    --secondary-foreground: 24 9.8% 10%;
-    --muted: 60 4.8% 95.9%;
-    --muted-foreground: 25 5.3% 44.7%;
-    --accent: 60 4.8% 95.9%;
-    --accent-foreground: 24 9.8% 10%;
+    --popover-foreground: 180 100% 33%;
+    /* Button & Borders: #FF4F0F */
+    --primary: 15 100% 50%;
+    --primary-foreground: 0 0% 100%;
+    /* Font Color: #03A6A1 */
+    --secondary: 180 100% 33%;
+    --secondary-foreground: 0 0% 100%;
+    /* Highlight/Accent: #FFA673 */
+    --accent: 25 100% 70%;
+    --accent-foreground: 180 100% 33%;
+    --muted: 45 20% 95%;
+    --muted-foreground: 180 100% 33%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 60 9.1% 97.8%;
-    --border: 20 5.9% 90%;
-    --input: 20 5.9% 90%;
-    --ring: 20 14.3% 4.1%;
-    --radius: 0.5rem;
+    /* Borders: #FF4F0F */
+    --border: 15 100% 50%;
+    --input: 45 20% 95%;
+    --ring: 15 100% 50%;
+    --radius: 1rem;
   }
 
   .dark {
@@ -57,9 +60,195 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-family: 'Comic Sans MS', cursive, system-ui, sans-serif;
+    color: #03A6A1;
   }
 
   form .react-colorful {
     @apply w-full
+  }
+  
+  /* All buttons - white text */
+  button {
+    color:#FFA673 !important;
+  }
+  
+  /* All input fields - teal text */
+  input, input[type="email"], input[type="password"], input[type="text"] {
+    color: #03A6A1 !important;
+    background-color: white !important;
+  }
+  
+  /* Input fields when focused - keep white background */
+  input:focus, input[type="email"]:focus, input[type="password"]:focus, input[type="text"]:focus {
+    background-color: white !important;
+  }
+  
+  /* All labels, placeholders, and text */
+  label, p, span, div, h1, h2, h3, h4, h5, h6 {
+    color: #03A6A1;
+  }
+  
+  /* All text in buttons should be #FFA673 */
+  button span, button div, button p {
+    color: #FFA673 !important;
+  }
+  
+  /* Google and Apple button hover */
+  button[class*="outline"]:hover {
+    background-color: #FFE3BB !important;
+    border-color: #FF4F0F !important;
+  }
+  
+  /* Placeholder text - lighter teal */
+  input::placeholder {
+    color: #03A6A1 !important;
+    opacity: 0.7;
+  }
+  
+  /* OTP Input specific styles to prevent overlapping */
+  [data-otp-input] {
+    position: relative;
+    z-index: 10;
+    isolation: isolate;
+  }
+  
+  [data-otp-input] > div {
+    position: relative;
+    z-index: 10;
+  }
+  
+  [data-otp-input] [data-otp-input] {
+    position: relative;
+    z-index: 10;
+  }
+  
+  /* Ensure input slots are properly positioned */
+  [data-otp-input] [role="textbox"] {
+    position: relative;
+    z-index: 10;
+  }
+  
+  /* Prevent any pseudo-elements from overlapping */
+  [data-otp-input]::before,
+  [data-otp-input]::after {
+    display: none !important;
+  }
+  
+  /* Ensure no other elements can overlap the OTP input */
+  [data-otp-input] * {
+    position: relative;
+    z-index: 20;
+  }
+  
+  /* Override any conflicting styles */
+  [data-otp-input] input,
+  [data-otp-input] div[role="textbox"] {
+    position: relative !important;
+    z-index: 20 !important;
+    background: white !important;
+  }
+  
+  /* Completely isolate OTP input from any overlapping elements */
+  [data-otp-input] {
+    position: relative !important;
+    z-index: 100 !important;
+    isolation: isolate !important;
+    background: white !important;
+    padding: 8px !important;
+    border-radius: 8px !important;
+  }
+  
+  /* Ensure all child elements are properly positioned */
+  [data-otp-input] > * {
+    position: relative !important;
+    z-index: 101 !important;
+  }
+  
+  /* Prevent any external elements from overlapping */
+  .space-y-2 > div:has([data-otp-input]) {
+    position: relative !important;
+    z-index: 100 !important;
+    background: white !important;
+    padding: 8px !important;
+    border-radius: 8px !important;
+  }
+}
+
+/* Kid-Friendly Styles - Custom Brand Colors */
+@layer components {
+  .kid-button {
+    @apply rounded-2xl px-6 py-3 text-lg font-bold shadow-lg transition-all duration-200 hover:scale-105 active:scale-95 border-2 border-primary;
+    background-color: #FF4F0F;
+    color: white;
+  }
+  
+  .kid-input {
+    @apply rounded-2xl border-2 border-primary px-4 py-3 text-lg focus:border-secondary focus:ring-4 focus:ring-secondary/30 bg-white;
+    border-color: #FF4F0F;
+    color: #03A6A1;
+  }
+  
+  .star-decoration {
+    position: relative;
+  }
+  
+  .star-decoration::before {
+    content: '⭐';
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    font-size: 1.2rem;
+    animation: twinkle 2s infinite;
+  }
+  
+  .star-decoration::after {
+    content: '✨';
+    position: absolute;
+    bottom: -5px;
+    left: -5px;
+    font-size: 1rem;
+    animation: twinkle 2s infinite 1s;
+  }
+  
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.7; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.2); }
+  }
+  
+  .playful-border {
+    @apply border-4 border-solid border-primary rounded-3xl;
+  }
+  
+  .bounce-in {
+    animation: bounceIn 0.6s ease-out;
+  }
+  
+  @keyframes bounceIn {
+    0% { transform: scale(0.3); opacity: 0; }
+    50% { transform: scale(1.05); }
+    70% { transform: scale(0.9); }
+    100% { transform: scale(1); opacity: 1; }
+  }
+  
+  /* Custom brand text styles */
+  .kid-text-primary, .tracking-tight {
+    @apply font-bold;
+    color: #FF4F0F;
+  }
+  
+  .kid-text-secondary {
+    @apply font-bold;
+    color: #03A6A1;
+  }
+  
+  .kid-text-accent {
+    @apply font-bold;
+    color: #FFA673;
+  }
+  
+  /* Custom brand background gradients */
+  .kid-bg-gradient {
+    background: linear-gradient(to right, rgba(255, 79, 15, 0.2), rgba(255, 166, 115, 0.2), rgba(3, 166, 161, 0.2));
   }
 }

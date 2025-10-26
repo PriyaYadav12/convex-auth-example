@@ -1,7 +1,7 @@
 import { Chat } from "@/Chat/Chat";
 import { ChatHeader } from "@/Chat/ChatIntro";
 import { Layout } from "@/Layout";
-import { SignInFormsShowcase } from "@/auth/SignInFormsShowcase";
+import { SignInFormPasswordAndVerifyViaCode } from "@/auth/SignInFormPasswordAndVerifyViaCode";
 import { UserMenu } from "@/components/UserMenu";
 import { api } from "../convex/_generated/api";
 import { Authenticated, Unauthenticated, useQuery } from "convex/react";
@@ -28,7 +28,11 @@ export default function App() {
           <Chat viewer={user?._id!} />
         </Authenticated>
         <Unauthenticated>
-          <SignInFormsShowcase />
+          <div className="flex items-center justify-center py-16 w-full">
+            <div className="w-full max-w-md mx-auto px-6">
+              <SignInFormPasswordAndVerifyViaCode />
+            </div>
+          </div>
         </Unauthenticated>
       </>
     </Layout>
